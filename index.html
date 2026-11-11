@@ -1,0 +1,838 @@
+<!--Hey stardancers, Get your special sock out nerds, it's gonna get good.-->
+<!--Made by Koushik Tummepalli-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="3FmCqrfFz94FmjeXlzWYNwMPMoUYnnPvcUBHNaQUtK4" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://koushik919-del.github.io/mobile-marvelos/">
+
+    <title>MarvelOS (mobile-friendly) | Koushik Tummepalli</title>
+
+    <meta name="author" content="Koushik Tummepalli">
+    <meta name="description" content="Explore the mobile-friendly MarvelOS experience created by Koushik Tummepalli.">
+
+    <meta name="theme-color" content="#000000">
+
+    <meta property="og:title" content="MarvelOS (mobile-friendly)">
+    <meta property="og:description" content="A mobile-friendly interactive superhero-inspired desktop experience.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://koushik919-del.github.io/mobile-marvelos/">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Patrick+Hand&family=Pirata+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="timeslip.css">
+<style>
+    #zenpool {
+    background: black;
+    color: lightgray;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 3px solid red;
+    box-shadow: 0 0 40px rgba(203, 45, 62, 0.5);
+    z-index: 9999;
+}
+#zenpool .title-bar{
+    background: linear-gradient(90deg, red, darkred);
+    color: white;
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+}
+#zenpool .window-content{
+    padding: 20px;
+    overflow-y: auto;
+    height: calc(100% - 40px);
+    background: black;
+}
+.zenpool-section{display:none}
+.zenpool-section.active{display:block}
+.zenpool-paragraph { margin-bottom: 14px; color: lightgray; }
+.zenpool-action {
+    color: gold;
+    font-style: italic;
+    font-family: 'Patrick Hand', cursive;
+    margin: 18px 0;
+    text-align: center;
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+.zenpool-choice-row{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin:30px 0 20px 0;
+    padding:20px;
+    background:rgba(203, 45, 62, 0.1);
+    border-top:2px dashed red;
+    border-bottom:2px dashed red;
+}
+.zenpool-btn{
+    padding:15px 35px;
+    font-family:'Bebas Neue', cursive;
+    font-size:1.6rem;
+    letter-spacing:3px;
+    cursor:pointer;
+    border:2px solid;
+    border-radius:6px;
+    transition:all 0.2s ease;
+    background:black;
+}
+#zenpool-logan-btn{color:gold;border-color:gold}
+#zenpool-logan-btn:hover{background:gold;color:black;box-shadow:0 0 20px rgba(240,192,64,0.6)}
+#zenpool-peter-btn{color:red;border-color:red}
+#zenpool-peter-btn:hover{background:red;color:white;box-shadow:0 0 20px rgba(204,34,34,0.6)}
+.zenpool-trailer{
+    margin:20px 0;
+    padding:12px;
+    background:black;
+    border:2px solid red;
+    border-radius:8px;
+    box-shadow:0 0 15px rgba(203,45,62,0.4);
+}
+.zenpool-trailer .trailer-label{
+    font-family:'Bebas Neue', cursive;
+    font-size:1.2rem;
+    color:gold;
+    letter-spacing:2px;
+    margin-bottom:8px;
+    text-align:center;
+}
+.zenpool-trailer iframe{border-radius:4px;display:block;width:100%;height:315px}
+.zenpool-commentary{
+    color:gray;
+    font-style:italic;
+    margin:12px 0 18px 0;
+    padding-left:12px;
+    border-left:3px solid red;
+}
+.zenpool-fade-text{color:gray;text-align:center;margin-top:20px;font-size:0.85rem;font-style:italic}
+.zenpool-icon img{width:24px;height:24px;object-fit:contain;border-radius:50%}
+.zenpool-icon{cursor:pointer}
+.zenpool-icon.dim{opacity:0.35;filter:grayscale(70%)}
+#zenpool-content{scroll-behavior:smooth}
+
+#dailybugle {
+    background: wheat !important;
+    color: black !important;
+    font-family: 'Times New Roman', Times, serif !important;
+    border: 3px solid black !important;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5) !important;
+}
+#dailybugle .title-bar {
+    background: black !important;
+    color: wheat !important;
+    font-family: 'Times New Roman', Times, serif !important;
+    letter-spacing: 1px !important;
+}
+#dailybugle .window-content{
+    padding:0 !important;
+    background:wheat !important;
+    overflow-y:auto !important;
+}
+.bugle-masthead{background:wheat;border-bottom:4px double black;padding:20px 25px 15px 25px;text-align:center}
+.bugle-masthead .bugle-title-big{font-family:'Pirata One','Times New Roman',serif;font-size:3.8rem;margin:0;line-height:1;letter-spacing:2px;color:black}
+.bugle-masthead .bugle-tagline{font-style:italic;font-size:0.85rem;margin:8px 0 12px 0;color:darkgray}
+.bugle-meta-row{display:flex;justify-content:space-between;border-top:1px solid black;border-bottom:1px solid black;padding:4px 0;font-size:0.75rem;font-variant:small-caps;letter-spacing:1px;color:black}
+.bugle-body{padding:18px 22px 22px 22px}
+.bugle-headline-strip{font-family:'Pirata One','Times New Roman',serif;font-size:1.6rem;text-align:center;margin:0 0 14px 0;padding:10px 0;border-top:2px solid black;border-bottom:1px solid black;letter-spacing:1px}
+.bugle-columns{column-count:2;column-gap:24px;column-rule:1px solid gray}
+.bugle-article{break-inside:avoid;margin-bottom:18px;padding-bottom:14px;border-bottom:1px dotted gray}
+.bugle-article:last-child{border-bottom:none}
+.bugle-article h3{font-family:'Pirata One','Times New Roman',serif;font-size:1.25rem;line-height:1.15;margin:0 0 4px 0;color:black;letter-spacing:0.5px}
+.bugle-article .bugle-byline{font-size:0.7rem;font-variant:small-caps;color:darkgray;margin-bottom:6px;letter-spacing:1px}
+.bugle-article p{font-size:0.85rem;line-height:1.45;margin:0;text-align:justify;color:black}
+.bugle-article .bugle-lead::first-letter{font-family:'Pirata One',serif;font-size:2.6rem;float:left;line-height:0.85;padding:4px 6px 0 0;color:black}
+.bugle-podcast-section{margin-top:22px;padding:16px;background:black;color:wheat;border-top:4px double wheat}
+.bugle-podcast-section h2{font-family:'Pirata One',serif;font-size:1.8rem;margin:0 0 4px 0;color:gold;text-align:center;letter-spacing:2px}
+.bugle-podcast-section .podcast-sub{font-style:italic;font-size:0.8rem;color:lightgray;text-align:center;margin-bottom:12px}
+.bugle-podcast-section iframe{width:100%;height:360px;border:2px solid gold;background:black}
+.bugle-podcast-footnote{font-size:0.7rem;color:gray;text-align:center;margin-top:8px;font-style:italic}
+.bugle-footer-bar{border-top:2px solid black;margin-top:18px;padding-top:8px;font-size:0.7rem;font-variant:small-caps;text-align:center;color:darkgray;letter-spacing:1px}
+</style>
+</head>
+<body>
+
+<div id="tva-entry-screen" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: black; z-index: 100000; display: flex; align-items: center; justify-content: center; flex-direction: column; color: lightgray; font-family: 'Bebas Neue', cursive; text-align: center; padding: 20px; box-sizing: border-box;">
+<div style="border: 2px solid gold; padding: 40px; max-width: 600px; background: black; box-shadow: 0 0 30px rgba(255, 204, 0, 0.15);">
+<h1 style="font-size: 4rem; color: gold; margin: 0; letter-spacing: 4px;">T.V.A.</h1>
+<h2 style="font-size: 1.8rem; margin: 10px 0 20px; color: white;">TIME VARIANCE AUTHORITY</h2>
+<div style="font-family: 'Patrick Hand', cursive; font-size: 1.2rem; line-height: 1.5; color: lightgray; margin-bottom: 30px;">
+Hey! Focus! My name doesn't matter, we have thirty seconds before your atoms rip apart.
+Loki’s tracking two temporal pile-ups. A mutant reality is colliding into a universe with a tired, middle-aged Spider-Man. Plus, a 'Fantastic Four' just dropped uninvited into our core timeline—616, 199999, whatever you want to call it, it's redlining.
+You're starting to glitch, so that's my cue. Get down there, check out the locals, and don't break anything. Go!
+</div>
+<button onclick="enterMarvelOS()" style="padding: 12px 30px; background: darkred; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'Bebas Neue', cursive; font-size: 1.5rem; letter-spacing: 2px; transition: 0.3s;" onmouseover="this.style.background='red'" onmouseout="this.style.background='darkred'">
+TIME SLIP INTO TIMELINE
+</button>
+<p style="font-family: 'Patrick Hand', cursive; font-size: 0.9rem; color: gray; margin-top: 15px;">(and do not brag about the jetskis)</p>
+</div>
+</div>
+
+<div id="time-slip-overlay">
+<div class="slip-core"></div>
+<div class="slip-text" id="slip-text">TIME SLIPPING...</div>
+</div>
+
+<div id="news-scroll-thingy">
+<div class="news-name">Breaking News</div>
+<div class="thenews">
+<div class="news-scroll" id="thenewsitems">
+DEPARTMENT OF DAMAGE CONTROL IS EVIL! ILLEGAL TESTING AGANIST PEOPLE BORN WITH MUTATIONS! SPIDER-MAN SAVES THE DAY! &nbsp;&nbsp;&bull;&nbsp;&nbsp; 
+THESE PEOPLE BORN WITH MUTATIONS ARE NOW BEING CALLED MUTANTS! THEY HAVE POWERS FROM BIRTH!&nbsp;&bull;&nbsp;
+THE CASE OF CAPTAIN AMERICA SUING THE NEW AVENGERZ OVER COPYRIGHT ISSUES HAS NOT END IN SIGHT! AN INFINITY WAR! &nbsp;&bull;&nbsp;
+IS DOCTOR BANNER STILL SAFE TO BE AROUND AFTER HIS RECENT HULK OUT IN THE DODC BUILDING? WHO DOES HE THINK HE IS? A HERO? A INCREDIBLE HULK? &nbsp;&bull;&nbsp; 
+HOW MANY HULKS ARE THERE? RED HULK, GREEN HULK, YOUNG GREEN HULK, WHAT IS THIS PLANET HULK? THEY SHOULD GO TO A ROGUE PLANET LIKE SAKAAR BEFORE A WORLD WAR HULK HAPPENS! &nbsp;&bull;&nbsp;
+ARE THE AVENGERS THE PROBLEM OR THE SOLUTION? BEFORE THEM, THE WORLD WAS SAFE! NOW, NEW YORK IS A PLACE OF CHAOS! &nbsp;&bull;&nbsp;
+</div>
+</div>
+</div>
+
+<div id="desktop">
+<div id="doomsday-video"></div>
+<div id="stark-pic"></div>
+<div id="doomgltich"></div>
+<div class="doom-text">VON DOOM<br>INDUSTRIES</div>
+</div>
+
+<div id="app-icons">
+<div class="icon" style="top: 20px; left: 20px;" onclick="openWindow('dailybugle')"><i><img src="https://z-cdn-media.chatglm.cn/files/147a50ee-d500-4b99-a83a-8a42f972a452.png?auth_key=1891817943-45fb628b3b0e4cf3b1f5bcf796cae5f0-0-9aea17300ab838552c916b14f0f03715" alt="Daily Bugle"></i><span>DAILY BUGLE</span></div>
+<div class="icon" style="top: 20px; left: 130px;" onclick="openWindow('friday')"><i><img src="https://z-cdn-media.chatglm.cn/files/9ce82c84-6e4e-412b-b17c-c985df1b0320.jpg?auth_key=1891817943-77a54412d084417fa0e592602bdcd27b-0-32515bf0f73662de6ae5600530ff5301" alt="FRIDAY"></i><span>FRIDAY - STARK ASSISTANT</span></div>
+<div class="icon" style="top: 20px; left: 240px;" onclick="openWindow('clock')"><i><img src="https://z-cdn-media.chatglm.cn/files/cd8a6da8-540b-4262-ab15-2a6944733b3b.png?auth_key=1891817943-94712403e1f44112acc6a74a631aea1b-0-0a7ad806668bcf211c60ac4a970eb5e5" alt="Clock"></i><span>Clock</span></div>
+<div class="icon" style="top: 140px; left: 20px;" onclick="openWindow('tracker')"><i><img src="https://z-cdn-media.chatglm.cn/files/c2c372ce-b78b-4cce-b980-612840b108da.jpg?auth_key=1891817943-51061b40d63040479df750fcdc3ec0a4-0-18bb834f44b69afa1eef7463588d7246" alt="Spidey Tracker"></i><span>Spidey Tracker</span></div>
+<div class="icon" style="top: 140px; left: 130px;" onclick="openWindow('sheild')"><i><img src="https://z-cdn-media.chatglm.cn/files/41b339d1-eedf-4508-a8ad-abc27bfec56f.jpg?auth_key=1891866717-b1676de1fc87443696efefbe0ad2bb04-0-2e882ce4d106cdea86ccfc3ad7d00bd6" alt="SHIELD"></i><span>SHEILD DATABASE</span></div>
+<div class="icon" style="top: 140px; left: 240px;" onclick="openWindow('thefour')"><i><img src="https://z-cdn-media.chatglm.cn/files/f7adc14e-d1ae-41e9-8021-6c4ea2ae7bfe.png?auth_key=1891866956-709871d31ea048e4a80e602ebdd89136-0-f7105a85fb1c9072f260700707fef24c" alt="Veronica"></i><span>Veronica Scans</span></div>
+<div class="icon" style="top: 260px; left: 20px;" onclick="openWindow('games')"><i><img id="games-icon-img" referrerpolicy="no-referrer" src="https://z-cdn-media.chatglm.cn/files/2f3d2fe1-e9a1-403c-8d77-a28e27ecfbf1.png?auth_key=1891819418-26fdbb5a43b4404cb0194b5d7a52d930-0-640db7da43bd44036761e4df6e239cca" alt="Insomniac Games"></i><span id="games-icon-text">Insomniac Games</span></div>
+<div class="icon" style="top: 260px; left: 130px;" onclick="openWindow('accords')"><i><img src="https://z-cdn-media.chatglm.cn/files/34c38369-5248-4ca5-92e2-0ede3f703d97.jpg?auth_key=1891866717-a80b8e549bc44224aa33373742860ac1-0-961dbd79cd76d5137b0ece4e682f4d82" alt="Accords"></i><span>Sokovia Accords</span></div>
+<div class="icon" style="top: 260px; left: 240px;" onclick="openWindow('truebelievers')"><i><img src="https://cdn-icons-png.flaticon.com/512/2882/2882039.png" alt="True Believers Art"></i><span>True Believers Art</span></div>
+</div>
+
+<div id="bottombar">
+<div id="dock-apps">
+<div class="barpic" onclick="openWindow('dailybugle')">📰</div>
+<div class="barpic" onclick="openWindow('friday')">⚡</div>
+<div class="barpic" onclick="openWindow('clock')">⏰</div>
+<div class="barpic" onclick="openWindow('tracker')">🕷️</div>
+<div class="barpic" onclick="openWindow('sheild')">🛡️</div>
+<div class="barpic" onclick="openWindow('thefour')">🚀</div>
+<div class="barpic" onclick="openWindow('games')">🎮</div>
+<div class="barpic" onclick="openWindow('accords')">📜</div>
+<div class="barpic" onclick="openWindow('truebelievers')">🎨</div>
+<div class="barpic zenpool-icon" id="zenpool-icon" onclick="openZenpool()" title="Zenpool">
+<img src="https://z-cdn-media.chatglm.cn/files/00e05c02-a1b7-4507-ae49-9d6681e08d6b.png?auth_key=1892560207-3afbc4a8f5a44393b95d9f45213daf22-0-fd1f42b84d81ef682ad296ad1691056f" alt="Zenpool">
+</div>
+</div>
+<div id="dock-status">
+<div id="mode-countdown-wrap" style="margin-left:auto;color:#ffcc00;font-family:'Bebas Neue',cursive;font-size:13px;letter-spacing:1px;padding:0 8px;white-space:nowrap" title="Time until Normal Mode and Doom Protocol switch">SWITCH IN <span id="mode-countdown">2:00</span></div>
+<div class="time" id="bartime" style="margin-left:0">--:--</div>
+</div>
+</div>
+
+<iframe id="doomsday-audio-player" style="position: fixed; top: 0; left: 0; width: 1px; height: 1px; z-index: -1; opacity: 0; pointer-events: none;" allow="autoplay"></iframe>
+
+<div class="window" id="dailybugle" style="width: 880px; height: 680px;">
+<div class="title-bar" onmousedown="dragWIndow(event, 'dailybugle')"><span>The Daily Bugle</span><div class="titlebarbtns"><button onclick="closeWindow('dailybugle')"></button></div></div>
+<div class="window-content">
+<div class="bugle-masthead">
+<div class="bugle-title-big">The Daily Bugle</div>
+<div class="bugle-tagline">"Truth. Justice. And Putting Spider-Man Behind Bars."</div>
+<div class="bugle-meta-row">
+<span>Vol. XCIV &middot; No. 412</span>
+<span>New York City &middot; Sacred Timeline Edition</span>
+<span>Price: 35&cent;</span>
+</div>
+</div>
+<div class="bugle-body">
+<div class="bugle-headline-strip">SPIDER-MAN MENACE STRIKES AGAIN &mdash; HOW MANY MORE?</div>
+<div class="bugle-columns">
+<div class="bugle-article">
+<h3>Spider-Man is a Bad Guy! The Evidence is Clear!</h3>
+<div class="bugle-byline">By J. Jonah Jameson &middot; Editor-in-Chief</div>
+<p class="bugle-lead">He wears a mask to hide his identity. He attacks law enforcement. He swings through our city like he owns it. It is time we stop calling him a hero and start calling him what he is: a public menace! Spider-Man has been spotted three times this week interfering with police operations, leaving behind a trail of property damage that YOU, the taxpayer, will foot the bill for. When will the city wake up?</p>
+</div>
+<div class="bugle-article">
+<h3>How Many Hulks Are There?! Hulk-Hater Ross Exposed As Red Hulk!</h3>
+<div class="bugle-byline">By Koushik Tummepalli</div>
+<p>First we had the green one. Then the grey one. Now, sources reveal that Thaddeus "Thunderbolt" Ross has mutated into the infamous Red Hulk! The hypocrisy is staggering. The man who built his reputation on hating Hulks has BECOME one. Where does it end? How many Hulks must we tolerate before somebody does something?</p>
+</div>
+<div class="bugle-article">
+<h3>Is Bruce Banner Safe To Be Around?</h3>
+<div class="bugle-byline">By J. Jonah Jameson</div>
+<p>After his terrifying new Hulk-out inside a Department of Damage Control facility, we have to ask: is Bruce Banner a liability to society? The man turns into a giant green rage monster whenever he gets angry, and yet we are expected to just let him walk the streets. One bad day at the coffee shop and half of Manhattan is rubble. Where is the COMMON SENSE?</p>
+</div>
+<div class="bugle-article">
+<h3>Captain America Sues the New Avengerz! Copyright Chaos!</h3>
+<div class="bugle-byline">By J. Jonah Jameson</div>
+<p>In a legal battle that has the entire superhero community reeling, the original Captain America has filed a multi-billion dollar lawsuit against the newly-formed "Avengerz" (yes, with a Z) over copyright infringement. The new team claims fair use. The case has no end in sight, and we expect this Infinity War of lawyers to drag on for years.</p>
+</div>
+<div class="bugle-article">
+<h3>Mutants: Born or Made? DODC's Dark Secret Exposed!</h3>
+<div class="bugle-byline">By J. Jonah Jameson</div>
+<p>An inside source at the Department of Damage Control has confirmed what many have long suspected: people are being BORN with mutations, and the DODC has been performing illegal testing on them for years. These so-called "mutants" have powers from birth. They are the next step in human evolution, and our government is treating them like lab rats. DISGUSTING.</p>
+</div>
+<div class="bugle-article">
+<h3>The Sokovia Accords: Are They Working?</h3>
+<div class="bugle-byline">By J. Jonah Jameson</div>
+<p>Signed. Sealed. And barely enforced. The Sokovia Accords were supposed to bring enhanced individuals under control, but a year later the streets are more chaotic than ever. Tony Stark signed. War Machine signed. Captain America DECLINED. The Accords are a piece of paper. We need enforcement, not legislation.</p>
+</div>
+<div class="bugle-article">
+<h3>Where is Tony Stark? Reclusive Billionaire Goes Silent!</h3>
+<div class="bugle-byline">By J. Jonah Jameson</div>
+<p>Stark Industries has not released a public statement from CEO Tony Stark in over six weeks. No press conferences. No gala appearances. No "I am Iron Man" grandstanding. Sources suggest he has retreated to his upstate compound, fueling rumors of a falling-out with the Avengers or, worse, a relapse. We deserve answers.</p>
+</div>
+<div class="bugle-article">
+<h3>Fantastic 4 Spaceship Spotted Over NYC!</h3>
+<div class="bugle-byline">By J. Jonah Jameson</div>
+<p>A completely white spacecraft, evading standard radar and satellite imaging, was spotted hovering over Manhattan last night. The only notable feature: a glowing blue "4" painted on the hull. Are these visitors? Invaders? Tourists? We are watching. We are ALWAYS watching.</p>
+</div>
+<div class="bugle-article">
+<h3>Avengerz Tower Sold to Mystery Buyer!</h3>
+<div class="bugle-byline">By J. Jonah Jameson</div>
+<p>The former Stark Tower has reportedly been sold to an unnamed buyer for an undisclosed sum. The deal was closed through seventeen shell companies, none of which have public officers listed. Whoever now owns the building that overlooks ALL of Manhattan has gone to extraordinary lengths to remain anonymous. Comforting. Very comforting.</p>
+</div>
+</div>
+<div class="bugle-footer-bar">
+&copy; Daily Bugle Publishing &middot; Printed in New York City &middot; All Rights Reserved &middot; "If it's in the Bugle, it's the truth." &mdash; JJJ
+</div>
+<div class="bugle-podcast-section">
+<h2>&#127911; JUST THE FACTS &mdash; The Podcast</h2>
+<div class="podcast-sub">Live from the booth of J. Jonah Jameson &middot; Stream every episode</div>
+<iframe src="https://www.youtube.com/embed/videoseries?list=PLeysuy2ZG8eci5hvOr77pZRfpZIXdRFtX" title="Just the Facts with J. Jonah Jameson" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="bugle-podcast-footnote">Episodes sourced from Marvel's Spider-Man (Insomniac) &middot; The opinions of JJJ do not reflect those of the management. Or anyone. Ever.</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="window" id="friday" style="width: 380px; height: 550px;">
+<div class="title-bar" onmousedown="dragWIndow(event, 'friday')"><span>F.R.I.D.A.Y. Interface</span><div class="titlebarbtns"><button onclick="closeWindow('friday')"></button></div></div>
+<div class="window-content">
+<div class="jarvis-header"><div class="jarvis-avatar">⚡</div><div><div class="jarvis-title">F.R.I.D.A.Y.</div><div class="jarvis-subtitle">Stark Industries AI</div></div><div class="jarvis-status-dot"></div></div>
+<div class="jarvis-messages" id="jarvis-messages"><div class="jarvis-msg-row assistant"><div class="jarvis-msg-label">F.R.I.D.A.Y.</div><div class="jarvis-msg-bubble">System online. Welcome back, sir. How may I assist you today?</div></div></div>
+<div class="jarvis-input-bar"><input type="text" class="jarvis-input" id="jarvis-input" placeholder="Ask F.R.I.D.A.Y..." autocomplete="off"><button class="jarvis-send-btn" id="jarvis-send-btn" onclick="sendJarvisMsg()">Send</button></div>
+</div>
+</div>
+
+<div class="window" id="clock" style="width: 300px; height: 400px;">
+<div class="title-bar" onmousedown="dragWIndow(event, 'clock')"><span>Clock</span><div class="titlebarbtns"><button onclick="closeWindow('clock')"></button></div></div>
+<div class="window-content">
+<div class="clock-time" id="clock-time">00:00</div>
+<div class="clock-date" id="clock-date">---</div>
+<div class="analog-clock" id="analog-clock">
+<div class="clock-hand hand-hour" id="hand-hour"></div>
+<div class="clock-hand hand-minute" id="hand-minute"></div>
+<div class="clock-hand hand-second" id="hand-second"></div>
+<div class="clock-center"></div>
+</div>
+</div>
+</div>
+
+<div class="window" id="tracker" style="width: 400px; height: 200px;">
+<div class="title-bar" onmousedown="dragWIndow(event, 'tracker')"><span>Spidey-Tracker</span><div class="titlebarbtns"><button onclick="closeWindow('tracker')"></button></div></div>
+<div class="window-content" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+<p style="margin-bottom: 15px; font-family: 'Patrick Hand', cursive; font-size: 18px;">Loading Spidey-Tracker web services...</p>
+<button style="padding: 10px 20px; background: red; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-family: 'Bebas Neue', cursive; font-size: 18px;" onclick="window.open('https://spideytracker.com/', '_blank')">Open Spidey-Tracker</button>
+</div>
+</div>
+
+<div class="window" id="sheild" style="width: 500px; height: 450px;">
+<div class="title-bar" onmousedown="dragWIndow(event, 'sheild')"><span>S.H.I.E.L.D. Database</span><div class="titlebarbtns"><button onclick="closeWindow('sheild')"></button></div></div>
+<div class="window-content">
+<div class="shield-search">
+<input type="text" class="shield-input" id="shield-search" placeholder="Enter Subject Name (e.g., Thanos, Star-Lord)..." autocomplete="off">
+<button class="shield-btn" id="shield-btn" onclick="searchShield()">Search</button>
+</div>
+<div class="shield-result" id="shield-result">
+<p>> AWAITING INPUT...</p>
+<p>> CLEARANCE LEVEL 7 GRANTED.</p>
+<p>> PLEASE ENTER SUBJECT NAME TO QUERY MAINFRAME.</p>
+</div>
+</div>
+</div>
+
+<div class="window" id="thefour" style="width: 500px; height: 600px;">
+<div class="title-bar" onmousedown="dragWIndow(event, 'thefour')"><span>Veronica Scans</span><div class="titlebarbtns"><button onclick="closeWindow('thefour')"></button></div></div>
+<div class="window-content">
+<div class="space-header"><h2>Orbital Tracker</h2><p>Monitoring unidentified stellar vehicles...</p></div>
+<div class="space-viewport">
+<div class="stars"></div>
+<div class="ship-container">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVOJGBAO_sG1-m2Bf6tyClN5AIe-RJdpSccuC_akYYaw&s=10" alt="Unidentified Stellar Vehicle" class="ship-img">
+</div>
+</div>
+<div class="ship-info">
+<h3>Unidentified Stellar Vehicle</h3>
+<p><strong>Appearance:</strong> The craft is completely white, reflecting almost all light. We don't know a lot about it, as it evades standard radar and satellite imaging.</p>
+<p><strong>Distinctive Marking:</strong> The only notable feature is a glowing, blue <span class="blue-4">4</span> painted on the hull. Origin and purpose unknown.</p>
+</div>
+</div>
+</div>
+
+<div class="window" id="games" style="width: 800px; height: 600px;">
+<div class="title-bar" onmousedown="dragWIndow(event, 'games')"><span>Games</span><div class="titlebarbtns"><button onclick="closeWindow('games')"></button></div></div>
+<div class="window-content">
+<div class="games-sidebar">
+<h4>Scratch Games</h4>
+<button class="game-btn" onclick="loadGame('Scratch Game 1', '151025381', 'scratch')">Scratch Game 1</button>
+<button class="game-btn" onclick="loadGame('Scratch Game 2', '158172882', 'scratch')">Scratch Game 2</button>
+<button class="game-btn" onclick="loadGame('Scratch Game 3', '166226094', 'scratch')">Scratch Game 3</button>
+<h4>YouTube Games</h4>
+<button class="game-btn" onclick="loadGame('YT Game 1', 'q4GdJVvdxss', 'youtube')">YT Game 1</button>
+<button class="game-btn" onclick="loadGame('YT Game 2', 'U-1cn1yOKYc', 'youtube')">YT Game 2</button>
+</div>
+<div class="games-main">
+<div class="game-header">
+<h3 id="game-title">Select a game from the left</h3>
+</div>
+<div class="game-wrapper">
+<iframe id="game-iframe" src="" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+</div>
+
+<div class="window" id="accords" style="width: 500px; height: 500px;">
+<div class="title-bar" onmousedown="dragWIndow(event, 'accords')"><span>Sokovia Accords</span><div class="titlebarbtns"><button onclick="closeWindow('accords')"></button></div></div>
+<div class="window-content">
+<div class="accord-header"><h2>THE SOKOVIA ACCORDS</h2><p>Official UN Document 4-U93J</p></div>
+<p>In accordance with the United Nations' concern regarding the unregulated actions of "enhanced individuals," the following protocols are hereby established as international law:</p>
+<br>
+<p>1. Any individual exhibiting extraterrestrial, enhanced, or superhuman abilities shall henceforth be considered a living weapon of mass destruction.</p>
+<p>2. Said individuals may not operate within the borders of any sovereign nation without explicit authorization.</p>
+<p>3. The use of abilities for personal vendettas, unauthorized peacekeeping, or property alteration is strictly prohibited.</p>
+<p>4. Failure to comply with these accords will result in immediate detainment at the Raft maximum-security facility.</p>
+<br>
+<div class="accord-signatures">
+<p>Signed: Tony Stark (Iron Man)</p>
+<p>Signed: James Rhodes (War Machine)</p>
+<p style="color: red;">Declined: Steve Rogers (Captain America)</p>
+</div>
+</div>
+</div>
+
+<div class="window" id="truebelievers" style="width: 800px; height: 600px;">
+<div class="title-bar" onmousedown="dragWIndow(event, 'truebelievers')"><span>True Believers Art</span><div class="titlebarbtns"><button onclick="closeWindow('truebelievers')"></button></div></div>
+<div class="window-content" style="padding: 0; overflow: hidden;">
+<div style="background: whitesmoke; padding: 15px; border-bottom: 2px solid lightgray; text-align: center;">
+<h2 style="font-family: 'Bangers', cursive; font-size: 2rem; color: red; margin: 0; letter-spacing: 2px;">True Believers Art Gallery</h2>
+<p style="font-family: 'Patrick Hand', cursive; color: darkgray; margin: 5px 0 0 0;">A collection of masterpieces from across the multiverse.</p>
+</div>
+<div style="padding: 20px; overflow-y: auto; height: calc(100% - 70px); display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; background: white;">
+<div style="border: 2px solid lightgray; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+<img src="https://z-cdn-media.chatglm.cn/files/c6359412-1ca3-4241-860c-aac15cd0f9d0.jpg?auth_key=1891953844-8391c4ba5e8d4006872128a61eaad4df-0-5424c783cef77f5a78107f4dfe99088e" style="width: 100%; height: 280px; object-fit: cover;" alt="Spider-Man vs Iron Man">
+<div style="padding: 10px; background: white;">
+<h4 style="margin: 0; font-size: 1.1rem; font-family: 'Bebas Neue', cursive; color: darkgray;">Spider-Man vs Iron Man</h4>
+<p style="margin: 0; font-size: 0.8rem; color: gray;">Iconic Clash</p>
+</div>
+</div>
+<div style="border: 2px solid lightgray; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+<img src="https://z-cdn-media.chatglm.cn/files/cc26d222-b89a-4672-af42-85e97e27e01f.jpg?auth_key=1891953844-183447e8b6dc45e8bb9e743eddbdaec7-0-f5eaddab6aa462e2ed81cca134ca7478" style="width: 100%; height: 280px; object-fit: cover;" alt="Red Mechanical Armor">
+<div style="padding: 10px; background: white;">
+<h4 style="margin: 0; font-size: 1.1rem; font-family: 'Bebas Neue', cursive; color: darkgray;">Crimson Mech</h4>
+<p style="margin: 0; font-size: 0.8rem; color: gray;">Industrial Battle</p>
+</div>
+</div>
+<div style="border: 2px solid lightgray; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+<img src="https://z-cdn-media.chatglm.cn/files/b6696f38-0ae7-458e-9f96-5d8fc4d245cf.jpg?auth_key=1891953844-6bc3245f032a42068d6449d7a6a9875f-0-2004228bd2fa403bf52999772d0ab5ff" style="width: 100%; height: 280px; object-fit: cover;" alt="Iron Man Battle Pose">
+<div style="padding: 10px; background: white;">
+<h4 style="margin: 0; font-size: 1.1rem; font-family: 'Bebas Neue', cursive; color: darkgray;">Iron Man Pose</h4>
+<p style="margin: 0; font-size: 0.8rem; color: gray;">Smoke & Metal</p>
+</div>
+</div>
+<div style="border: 2px solid lightgray; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+<img src="https://z-cdn-media.chatglm.cn/files/18be8603-ecfa-4ee2-85d7-c720b48716fd.jpg?auth_key=1891953844-ca2acc66c7324fa2b3baf7b67f8e890f-0-136954ed438ad55613272b37a8b89d0c" style="width: 100%; height: 280px; object-fit: cover;" alt="Tony Stark Iron Man Variant">
+<div style="padding: 10px; background: white;">
+<h4 style="margin: 0; font-size: 1.1rem; font-family: 'Bebas Neue', cursive; color: darkgray;">Tony Stark #1</h4>
+<p style="margin: 0; font-size: 0.8rem; color: gray;">Variant Edition</p>
+</div>
+</div>
+<div style="border: 2px solid lightgray; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+<img src="https://z-cdn-media.chatglm.cn/files/d386f9cd-557a-4983-b195-04a12d1c6876.jpg?auth_key=1891953844-5d33cde27ba540dabf8becd9f5829e6c-0-e7a884a8fdd9b11b01975ef977eb4b7e" style="width: 100%; height: 280px; object-fit: cover;" alt="Self-Made Man Cover">
+<div style="padding: 10px; background: white;">
+<h4 style="margin: 0; font-size: 1.1rem; font-family: 'Bebas Neue', cursive; color: darkgray;">Self-Made Man</h4>
+<p style="margin: 0; font-size: 0.8rem; color: gray;">Comic Cover</p>
+</div>
+</div>
+<div style="border: 2px solid lightgray; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+<img src="https://z-cdn-media.chatglm.cn/files/3387d138-7da2-4f24-a6a5-238e05124c99.jpg?auth_key=1891953844-38e955e2596c41fea118c8e0f23b95ba-0-f26c780557f2a08d6e219f53b8c963e0" style="width: 100%; height: 280px; object-fit: cover;" alt="Captain America Comic">
+<div style="padding: 10px; background: white;">
+<h4 style="margin: 0; font-size: 1.1rem; font-family: 'Bebas Neue', cursive; color: darkgray;">Captain America</h4>
+<p style="margin: 0; font-size: 0.8rem; color: gray;">Dynamic Action</p>
+</div>
+</div>
+<div style="border: 2px solid lightgray; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+<img src="https://z-cdn-media.chatglm.cn/files/a295ef52-f864-416d-8421-88e8688a3aa0.jpg?auth_key=1891953844-239888d927b746ab84e3e6ad3846934b-0-aeea5fb1c9b07afb9da85e0b8e9a89ef" style="width: 100%; height: 280px; object-fit: cover;" alt="Captain America Stained Glass">
+<div style="padding: 10px; background: white;">
+<h4 style="margin: 0; font-size: 1.1rem; font-family: 'Bebas Neue', cursive; color: darkgray;">Stained Glass Cap</h4>
+<p style="margin: 0; font-size: 0.8rem; color: gray;">Cathedral Art</p>
+</div>
+</div>
+<div style="border: 2px solid lightgray; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+<img src="https://z-cdn-media.chatglm.cn/files/71724286-2bc2-4aee-b1a0-edaf2eef9e9a.jpg?auth_key=1891953844-c94a67d9734b40859741b0f6e5cc6e0e-0-182763bb5adbbcef923e4e99a1fd9627" style="width: 100%; height: 280px; object-fit: cover;" alt="Captain America and Spider-Man">
+<div style="padding: 10px; background: white;">
+<h4 style="margin: 0; font-size: 1.1rem; font-family: 'Bebas Neue', cursive; color: darkgray;">Cap & Spidey</h4>
+<p style="margin: 0; font-size: 0.8rem; color: gray;">Chained Heroes</p>
+</div>
+</div>
+<div style="border: 2px solid lightgray; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+<img src="https://z-cdn-media.chatglm.cn/files/beac730c-bbb7-4388-b301-1dcbdb1b8386.jpg?auth_key=1891953844-684b7d4e38724e009dca30cda26de59f-0-c160d7490c4ea54ccc3cc94046894df1" style="width: 100%; height: 280px; object-fit: cover;" alt="Captain America Battle">
+<div style="padding: 10px; background: white;">
+<h4 style="margin: 0; font-size: 1.1rem; font-family: 'Bebas Neue', cursive; color: darkgray;">First Avenger</h4>
+<p style="margin: 0; font-size: 0.8rem; color: gray;">Jet Battle</p>
+</div>
+</div>
+<div style="border: 2px solid lightgray; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+<img src="https://z-cdn-media.chatglm.cn/files/c5a7e1eb-aa97-4472-8068-971dea37451f.jpg?auth_key=1891953844-7eb56c0b960e47db9adec4e93f1c1c98-0-135ddab0166ae7d2de711fd9f9f7286b" style="width: 100%; height: 280px; object-fit: cover;" alt="Green Hulk">
+<div style="padding: 10px; background: white;">
+<h4 style="margin: 0; font-size: 1.1rem; font-family: 'Bebas Neue', cursive; color: darkgray;">World Breaker</h4>
+<p style="margin: 0; font-size: 0.8rem; color: gray;">Hulk Rampage</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="window" id="zenpool" style="width: 720px; height: 620px; display: none;">
+<div class="title-bar" onmousedown="dragWIndow(event, 'zenpool')">
+<span>ZENPOOL</span>
+<div class="titlebarbtns"><button onclick="closeWindow('zenpool')"></button></div>
+</div>
+<div class="window-content" id="zenpool-content">
+<div class="zenpool-section active" id="zenpool-main">
+<div class="zenpool-action">[Zenpool window opens. Deadpool's mask fills the frame. He leans in close.]</div>
+<p class="zenpool-paragraph">"HOLY. SH*T. You're not who I think you are. Wait — yes the f**k you are. You're <i>a</i> you. Just not <i>the</i> you. You feel me? Picture this: I'm standing in a Taco Bell parking lot at 2 AM eating a Crunchwrap Supreme, and suddenly this little TVA TemPad thingy goes <i>BZZZT</i> and yanks me sideways through time-space-whatever-the-f**k, and I land HERE. Is that a Von Doom Industries logo? That's not f**king ominous AT ALL."</p>
+<p class="zenpool-paragraph">"Speaking of Doom — let me tell you about my HISTORY with that tin-plated, cape-wearing, third-person-speaking, Latverian drama-queen piece of sh*t. Victor. Von. Doom. Doctor Doom. NOT a real f**king doctor, by the way. He gave himself the title. Like Dr. Pepper. The man committed to a bit and never broke character for like sixty years of publication. That's RANGE, baby."</p>
+<p class="zenpool-paragraph">"Okay so. Comics Doom. The REAL Doom. Not the movie one — we don't talk about the f**king movie one. We're talking COMICS Doom. The Doom who runs Latveria like it's his personal fiefdom because it IS his personal fiefdom. 'Doom demands your obedience.' 'Doom shall not be moved.' 'Doom does not eat at Arby's.' That last one's not real but it FEELS real, doesn't it? That's character work."</p>
+<p class="zenpool-paragraph">"I have FOUGHT that man. Multiple times. He once kicked me into a mountain. A WHOLE f**king mountain. Just boot-to-chest, mountain, gone. I regenerated. We had words. The words were mostly him calling me a 'chattering fool' and me calling him 'Vic' and watching him get progressively more f**king upset. That's the trick with Doom, by the way — call him Vic. He HATES it. Somewhere in Latveria a Doombot cries. It's beautiful."</p>
+<p class="zenpool-paragraph">"There was this one time — Doom tried to steal my f**king powers. My healing factor. Because Doom's whole deal is he thinks he should have ALL the powers. He looked at me, this walking disaster, this pile of cancer and snark and spandex, and went 'yes, I want THAT inside me.' Read the room, Vic. He strapped me down — leather straps, very on-brand for Victor — hooked me up to some machine, monologued for like forty-five f**king minutes, and then the machine exploded because my body is a chaotic mess. I walked out. He screamed. We've been beefing ever since."</p>
+<p class="zenpool-paragraph">"And here's the THING about Doom that nobody wants to admit. The man is RIGHT. About a lot of sh*t. He genuinely is. He's smarter than Reed Richards, he's a better sorcerer than Strange on his good days, and his whole 'I will save the world but ONLY if I rule it' thing? There's an argument there. Doom has SEEN the future. Every f**king timeline. He's the only one who can hold it together. Everyone else fumbles. The Avengers fumble. The X-Men fumble. Reed fumbles. Doom doesn't fumble because Doom doesn't ALLOW himself to fumble. The tragedy of Victor Von Doom, baby."</p>
+<p class="zenpool-paragraph">"I have ALSO team-upped with him. We fought Thanos together once. Doom did most of the work. I did the comic relief. It was a beautiful partnership. We were on top of each other for like six hours. Purely tactical. Very sweaty. He called me 'the fool' no less than twelve times. I counted. Personal record."</p>
+<p class="zenpool-paragraph">"Oh, and SECRET WARS. The BIG one. The Jonathan Hickman one. Doom became GOD. Literally God. He had the Beyonders' power, he stitched together a patchwork planet out of dead universes, he called it Battleworld, and he RULED it. As God. He had a wife — Sue Storm, by the way, Reed's wife, Reed had to watch his wife be married to DOOM. He assigned barons! Like a medieval king! Maestro was a baron. F**KING MAESTRO. The evil future Hulk. That's COMMITMENT. And then Reed Richards had to come along and be like 'no Doom, you can't be God, that's bad, give it back.' Doom had a CASTLE. Reed lives in the Baxter Building. Advantage: Doom."</p>
+<p class="zenpool-paragraph">"So when I look at your little desktop here and I see 'VON DOOM INDUSTRIES' glitching in the corner like a f**king omen, I get a CHILL. Because Doom in THIS universe? That's a Doom with something to PROVE. He wants his TURN. He wants his Secret Wars. He wants his Battleworld. And this time Reed's not HERE, is he? This Doom is UNOPPOSED. That should scare the SH*T out of you, agent person."</p>
+<p class="zenpool-paragraph">"ANYWAY. Right. Boyfriends. The actual reason I'm here. Logan would just hand me a beer and go 'shut the f**k up, bub' and that's why I love him. Peter would politely listen for forty-five minutes and then gently suggest I see a therapist and that's why I love HIM. TWO MEN. TWO VIBES. ONE WADE."</p>
+<p class="zenpool-paragraph">"Boyfriend Number One: Logan. The Wolverine. Short. Angry. Canadian. Hair that defies physics. Claws that go <i>SNIKT</i>. He calls me 'bub.' He pretends he hates me but he literally let me sit on his lap during a car ride once and he didn't even stab me. That's MARRIAGE in Wolverine terms. And don't get me started on the claws. Nine inches of pure adamantium. He knows EXACTLY how to use them. He's never once gone soft on me. The man is HARD. He's always hard. That's the healing factor — he's always up. He's in a bar in Alberta right now drinking something brown and being sad about his dead kids from the X-Mansion. He needs me. He won't SAY he needs me. Classic Logan. I love him. I hate him. I want to f**k him. I want to fix him. He doesn't want to be fixed. That's the appeal."</p>
+<p class="zenpool-paragraph">"Boyfriend Number Two: Peter. Spider-Man. NOT the one from your sacred timeline — the middle-aged one. The one with the back problems and the rent and the Aunt May who is somehow still alive?? He's swinging around New York City trying to stop the X-Men universe from crashing into his universe, which is INSANE because he's like forty-five and his knees sound like bubble wrap. He also needs me. I once saw him web up a sandwich and eat it hanging upside down and that man needs MEAL PREP and EMOTIONAL SUPPORT. Peter's got the best wrist control in the business. The WEB-SHOOTERS. What did you THINK I meant? The man can keep a steady stream going for HOURS. Don't read into that."</p>
+<p class="zenpool-paragraph">"So. I gotta pick. Logan or Peter. Canada or Queens. Claws or webs. And I CAN'T. I physically, emotionally, spiritually, multiversally, s*xually, financially, CANNOT choose. The TemPad is at SEVEN F**KING PERCENT. Seven. I could jump ONCE. One boyfriend. One save. And then I'm stranded wherever I land forever. The math is F**KED."</p>
+<div class="zenpool-action">[He stops. Stares directly at the user.]</div>
+<p class="zenpool-paragraph">"So here's where YOU come in, agent person. TVA boy. Timeline cop. Whatever the f**k you are. Pick a boyfriend for me. Logan or Peter. Click the button. I will go save him. The other one... well. The other one dies. But that's multiverse stuff, baby. People die. People come back. People die AGAIN. I've died like forty times. Logan's killed me. Peter's killed me. I've killed me. We've all killed me. I'm the universal constant of getting stabbed. And I mean that in EVERY sense."</p>
+<p class="zenpool-paragraph">"Oh and ALSO — if you pick one for me, I'll tell you what I know about YOUR Doom problem. I have been inside Victor Von Doom — his HEAD, his LAB, his CASTLE, get your mind out of the gutter, agent person. So pick a boyfriend, save a timeline, and Uncle Wade will spill the Doom tea. Deal? Deal. No deal? Too bad, deal anyway. F**k you. Pick."</p>
+<p class="zenpool-paragraph">"Also if you pick neither I'm stealing your taco money. Don't test me. I've done worse. I was in X-Men Origins. The worst they can do is prune me and I'll just end up back in the Void and honestly the Void has better Wi-Fi than this place. Cassie Nova's there. Alioth is there too but he's chill once you get to know him. He's like a big cosmic dog. Don't pet him. He ate a Thor once."</p>
+<p class="zenpool-paragraph">"So. Logan. Or Peter. Choose. Now. THE BUTTONS ARE RIGHT THERE. CLICK ONE. I'M BEGGING. I WILL GET ON MY KNEES. I'm already on my knees. I spend a LOT of time on my knees. That's not a joke, that's a statement about my core workouts. Logan makes me do core. He says it's for combat. It's for combat. CHOOSE."</p>
+<div class="zenpool-choice-row">
+<button class="zenpool-btn" id="zenpool-logan-btn" onclick="pickBoyfriend('logan')">LOGAN</button>
+<button class="zenpool-btn" id="zenpool-peter-btn" onclick="pickBoyfriend('peter')">PETER</button>
+</div>
+</div>
+<div class="zenpool-section" id="zenpool-logan">
+<div class="zenpool-action">[Deadpool gasps. Clutches his chest dramatically.]</div>
+<p class="zenpool-paragraph">"LOGAN. You picked LOGAN. Oh my god. You get it. You GET IT. You understand that the grumpy Canadian with the metal bones and the tragic backstory and the sideburns that could cut glass is the SUPERIOR choice. I could KISS you. Spiritually I am kissing you. Spiritually we are MAKING OUT right now."</p>
+<p class="zenpool-paragraph">"Okay. Logan. Alberta. Bar. Sad man drinking brown liquid. I know EXACTLY which bar. It's called something Canadian, like 'The Moose's A**hole' or whatever. He's on his sixth drink. He's pretending he's not crying. He IS crying. Logan cries more than anyone in the Marvel universe and he will FIGHT you if you say so. He stabbed me. Worth it. Stabbing is Logan's love language. If he hasn't put something in you, he doesn't care about you. I've been in him more times than I can count. Adamantium hurts. Worth it."</p>
+<p class="zenpool-paragraph">"Here's the thing about Logan that I love and hate and want to have s*x with. The man has DIED so many times. Killed by mutants, by sentinels, by Magneto ripping the adamantium off his bones — that one was NASTY, do not look up the panels — he's been burned alive, he's been drowned, he's been buried under a glacier for like a year. And he ALWAYS comes back. He always f**king comes back. He's the most stubborn motherf**ker in the multiverse and I am DEEPLY in love with him for it. He's also got stamina for DAYS. The healing factor. Means he doesn't get tired. Ever. About anything. I'll let you sit with that one."</p>
+<p class="zenpool-paragraph">"Before I jump — you wanna see who you're saving? Three trailers. Three Logans. Three universes. All mine. Hit play. I'll yap."</p>
+<div class="zenpool-action">[Deadpool pulls out a beat-up tablet covered in maple syrup stains.]</div>
+<div class="zenpool-trailer">
+<div class="trailer-label">WOLVERINE — TRAILER ONE</div>
+<iframe src="https://www.youtube.com/embed/u1VCP3O8wG0" title="Wolverine Trailer 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="zenpool-commentary">"That's him. THE him. The OG. Look at those sideburns. Look at that scowl. He's been doing that scowl for like a hundred and fifty years and it still works. He hasn't smiled since 1974 and frankly I don't want him to. The scowl is the APPEAL."</div>
+<div class="zenpool-trailer">
+<div class="trailer-label">WOLVERINE — TRAILER TWO</div>
+<iframe src="https://www.youtube.com/embed/mFPSu9r3EW0" title="Wolverine Trailer 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="zenpool-commentary">"Okay this one — this is the SAD one. He's old. He's tired. He's drinking himself to death. I want to wrap him in a blanket. I want to fight him. I want to do BOTH at the same time. Don't judge me."</div>
+<div class="zenpool-trailer">
+<div class="trailer-label">WOLVERINE — TRAILER THREE</div>
+<iframe src="https://www.youtube.com/embed/bonUjFs2GnE" title="Wolverine Trailer 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="zenpool-commentary">"And THIS one. oh. Oh THIS one. This is MY movie. With ME. And my BOYFRIEND. That's right. THEY let us make a movie. TOGETHER. On SCREEN. Two and a half hours of me and him. Touching. Stabbing. Touching AND stabbing. The critics called it 'a love story disguised as a superhero movie' and the critics were RIGHT. I am SO proud of US. He's not here. He's in Alberta. He doesn't know this movie exists. He's gonna be SO mad when he finds out. It's gonna be HILARIOUS."</div>
+<p class="zenpool-paragraph">"I'm jumping. I'm going to Alberta. I'm gonna walk into that bar. I'm gonna sit next to him. He's gonna say 'what the f**k are you doing here, bub.' I'm gonna say 'saving your life, you beautiful disaster.' He's gonna stab me. I'm gonna regenerate. He's gonna pretend he's not relieved. We're gonna leave together. It's gonna be the most romantic thing that's ever happened in a Marvel comic."</p>
+<p class="zenpool-paragraph">"The other Logan — the Old Man Logan one, the one who DIED in the cornfield with the cross made of sticks — that one broke me. He died alone. And I promised myself that MY Logan would not die alone. That I would BE there. That I would be the annoying piece of sh*t sitting next to him when he goes. And I'm gonna keep that promise."</p>
+<p class="zenpool-paragraph">"I'm going. I'm gone. Tell Peter I'm sorry. Tell him he should stretch before swinging and that his rent's due on the 15th. You get it. You picked Logan. You GET it."</p>
+<p class="zenpool-paragraph">"Oh and your Doom problem. Here's the intel. Your Doom — THIS Doom — he's been to the Beyonders' realm. He's SEEN the source. He knows about the incursions before they happen. He's not CAUSING them, but he's PREPARING for them. He's building something. Something God-Emperor-shaped. Watch the logo. When it stops glitching, that's when he's ready. When it stops glitching, you RUN. Bye. LOVE YOU. KISS KISS. Tell Logan I'm coming. TELL HIM. And I do mean COMING. He'll know what I mean."</p>
+<div class="zenpool-action">[TemPad fires. Deadpool vanishes. The Zenpool window closes. The icon in the taskbar goes dim.]</div>
+<p class="zenpool-fade-text">[The three trailers keep playing in the dark.]</p>
+</div>
+<div class="zenpool-section" id="zenpool-peter">
+<div class="zenpool-action">[Deadpool freezes. Blinks. Mask eyes go wide.]</div>
+<p class="zenpool-paragraph">"Peter. You picked Peter. You picked the SPIDER. Oh my GOD. I thought you'd pick Logan. Everyone picks Logan. But you picked PETER. You picked the middle-aged web-slinger with the back pain and the rent and the dead uncle. You picked the SAD one. The TIRED one. The one who keeps going not because he's a stubborn Canadian but because he made a PROMISE to a DYING MAN and he will NEVER break it even if it kills him and it's KILLING him. I could cry. I AM crying. The mask hides it but I'm SOBBING right now."</p>
+<p class="zenpool-paragraph">"Okay. Peter. New York. Queens. He's swinging. He's tired. He's been swinging for like six hours because the incursion is freaking everyone out. His back is SCREAMING and his web-shooters are almost empty and he hasn't eaten since yesterday and he's running on guilt and coffee and the memory of Uncle Ben's voice. Classic Peter. The man would rather die than take a break. He has died. MULTIPLE times. But this time — this incursion — I don't know if he comes back from this one. That's why I gotta go."</p>
+<p class="zenpool-paragraph">"Here's the thing about Peter that I love and hate and want to wrap in a blanket and force to sleep. The man takes EVERYTHING on himself. Every fight, every loss, every person he couldn't save. He carries them all. Gwen, Uncle Ben, Doc Ock sometimes, Harry — every time he sees a bridge he flinches. And he SMILES. He makes JOKES. He goes 'hey, kiddo, need a hand?' and webs the bad guy and swings off and pretends he's fine. He's not fine. He has not been fine since he was fifteen years old. He is FORTY-FIVE. That's thirty years of not being fine. He's the guy who is friendly, neighborhood, and F**KING EXHAUSTED."</p>
+<p class="zenpool-paragraph">"Before I jump — you wanna see who you're saving? Three trailers. From OTHER timelines. Different Peters. Different universes. But it's all HIM. Same eyes under the mask. Same joke right before the punch. Same guy who gets back up."</p>
+<div class="zenpool-action">[Deadpool pulls out a tablet from somewhere impossible.]</div>
+<div class="zenpool-trailer">
+<div class="trailer-label">SPIDER-MAN — TRAILER ONE</div>
+<iframe src="https://www.youtube.com/embed/t06RUxPbp_c" title="Spider-Man Trailer 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="zenpool-commentary">"That's Peter. The way he moves. That's not flying, that's FALLING with STYLE. He's the only guy who makes gravity look like a suggestion. I once tried to swing like that. I broke both my legs. Logan laughed for an hour. Peter would've helped me up. That's the difference. That's ALWAYS the difference."</div>
+<div class="zenpool-trailer">
+<div class="trailer-label">SPIDER-MAN — TRAILER TWO</div>
+<iframe src="https://www.youtube.com/embed/7BK2Bg9liDk?start=8" title="Spider-Man Trailer 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="zenpool-commentary">"Okay this one gets me. Every time. I'm not crying, you're crying. The MASK is crying. Look at him. He's so SMALL. He's so SAD. He's carrying the whole world on those little spider-shoulders and nobody ASKED him to and nobody THANKS him and he does it ANYWAY. F**k. F**K. I gotta go save him. I GOTTA."</div>
+<div class="zenpool-trailer">
+<div class="trailer-label">SPIDER-MAN — TRAILER THREE</div>
+<iframe src="https://www.youtube.com/embed/e5wUilOeOmg" title="Spider-Man Trailer 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="zenpool-commentary">"Okay. There he is. That's my guy. That's my PETER. The webs, the quips, the heart, the back pain, the rent, the whole beautiful mess. He's out there RIGHT NOW swinging until his spine gives out because he made a promise to a dying man when he was FIFTEEN and he has never once — NOT ONCE — let that promise go. That's not stubbornness, that's not heroism, that's LOVE. Peter Parker swinging through Queens because he PROMISED — that's the most beautiful thing in any timeline. THAT'S the boyfriend. THAT'S the man."</div>
+<p class="zenpool-paragraph">"I'm jumping. Seven percent. Queens. I'm gonna land on a rooftop near him. He's gonna go 'Wade? What are you doing here?' and I'm gonna go 'saving your a**, web-head, sit DOWN.' He's gonna sit because nobody tells Peter Parker to sit down and he's secretly DESPERATE for someone to tell him to sit down. I'm gonna hand him a burrito I stole from a 7-Eleven. He's gonna eat it. He's gonna cry. I'm gonna cry. We're both gonna cry on a rooftop in Queens while the multiverse collapses around us. It's gonna be beautiful."</p>
+<p class="zenpool-paragraph">"The other Peter — the one who DIED in the arms of Miles Morales, the Peter who said 'I'm so sorry, kid, I tried, I really tried' — that one broke me too. He died thinking he didn't do enough. And I PROMISED myself that MY Peter would not die thinking he failed. That I would be there. That I would tell him he did enough. That he was enough. And I'm gonna keep that promise."</p>
+<p class="zenpool-paragraph">"I'm going. Tell Logan I'm sorry. Tell him he should eat something that isn't whiskey for once and that he deserves to be loved but also he has to LET himself be loved and that's the part he's bad at. You get it. You picked Peter. You GET it."</p>
+<p class="zenpool-paragraph">"Oh and your Doom problem. Your Doom is building a Battleworld. He's stitching together fragments of dead timelines. He's been doing it for MONTHS. The Von Doom Industries logo glitching? That's not a glitch. That's him pulling timelines through the ether. When it STOPS glitching, he's done. When it stops glitching, you RUN. Bye. LOVE YOU. KISS KISS. Tell Peter I'm coming. TELL HIM. And tell him to STRETCH. Stretching is important. For everything. For SWINGING. What did you think I meant?"</p>
+<div class="zenpool-action">[TemPad fires. Deadpool vanishes. The Zenpool window closes. The icon in the taskbar goes dim.]</div>
+<p class="zenpool-fade-text">[The three trailers keep playing in the dark.]</p>
+</div>
+</div>
+</div>
+
+<script src="script.js?v=2"></script>
+<script src="timeslip.js"></script>
+<script>
+function enterMarvelOS(){
+    const tvaScreen = document.getElementById('tva-entry-screen');
+    tvaScreen.style.transition = 'opacity 0.5s ease';
+    tvaScreen.style.opacity = '0';
+    if(typeof triggerTimeSlip === 'function'){
+        triggerTimeSlip();
+    }
+    setTimeout(()=>{
+        tvaScreen.style.display = 'none';
+    },500);
+}
+
+function openZenpool(){
+    const win = document.getElementById('zenpool');
+    win.style.display = 'block';
+    if(typeof openWindow === 'function'){
+        try{ openWindow('zenpool'); }catch(e){}
+    }
+    showZenpoolSection('zenpool-main');
+    const content = document.getElementById('zenpool-content');
+    if(content) content.scrollTop = 0;
+}
+
+function pickBoyfriend(choice){
+    const icon = document.getElementById('zenpool-icon');
+    if(icon) icon.classList.add('dim');
+    const sectionId = (choice === 'logan') ? 'zenpool-logan' : 'zenpool-peter';
+    showZenpoolSection(sectionId);
+    const content = document.getElementById('zenpool-content');
+    if(content) content.scrollTop = 0;
+}
+
+function showZenpoolSection(id){
+    const sections = document.querySelectorAll('.zenpool-section');
+    sections.forEach(s=>s.classList.remove('active'));
+    const target = document.getElementById(id);
+    if(target) target.classList.add('active');
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+    const closeBtn = document.querySelector('#zenpool .titlebarbtns button');
+    if(closeBtn){
+        closeBtn.addEventListener('click',function(){
+            const icon = document.getElementById('zenpool-icon');
+            if(icon) icon.classList.remove('dim');
+            setTimeout(()=>showZenpoolSection('zenpool-main'),100);
+        });
+    }
+});
+
+var hasTrailerPlayed = false;
+var isWaitingForGame = false;
+var gameVideoPlaying = false;
+var waitTimer = null;
+var trailerStartTimer = null;
+const DOOMSDAY_TRAILER_ID = "X1aFkAkFASk";
+
+function playDoomsdayTrailer(){
+    if(hasTrailerPlayed || !document.body.classList.contains('doomed')) return;
+    const player = document.getElementById('doomsday-audio-player');
+    if(!player) return;
+    hasTrailerPlayed = true;
+    isWaitingForGame = false;
+    if(waitTimer) clearTimeout(waitTimer);
+    waitTimer = null;
+    player.src = `https://www.youtube.com/embed/${DOOMSDAY_TRAILER_ID}?autoplay=1&controls=0&modestbranding=1&rel=0&playsinline=1`;
+    console.log("Doomsday Trailer audio is now playing underneath the main screen.");
+}
+
+function checkAndPlayTrailer(){
+    if(hasTrailerPlayed || !document.body.classList.contains('doomed')) return;
+    if(isWaitingForGame && !gameVideoPlaying) playDoomsdayTrailer();
+}
+
+if(typeof window.loadGame === 'function'){
+    const originalLoadGame = window.loadGame;
+    window.loadGame = function(){
+        originalLoadGame.apply(this,arguments);
+        gameVideoPlaying = true;
+        if(document.body.classList.contains('doomed')){
+            if(trailerStartTimer) clearTimeout(trailerStartTimer);
+            trailerStartTimer = null;
+            isWaitingForGame = true;
+        }
+    };
+}
+
+if(typeof window.closeWindow === 'function'){
+    const originalCloseWindow = window.closeWindow;
+    window.closeWindow = function(id){
+        originalCloseWindow.apply(this,arguments);
+        if(id === 'games'){
+            gameVideoPlaying = false;
+            checkAndPlayTrailer();
+        }
+    };
+}
+
+// Keep the original ticker and Games app content so Normal Mode can restore them.
+const normalNewsTickerContent = document.getElementById('thenewsitems')?.innerHTML || '';
+const normalGamesSidebarContent = document.querySelector('#games .games-sidebar')?.innerHTML || '';
+const normalGamesTitle = document.querySelector('#games .title-bar span')?.textContent || 'Games';
+let previousGameTitle = null;
+let previousGameSrc = '';
+
+function setNewsTickerContent(content){
+    const ticker = document.getElementById('thenewsitems');
+    if(!ticker) return;
+    ticker.innerHTML = content;
+    const restartedTicker = ticker.cloneNode(true);
+    ticker.parentNode.replaceChild(restartedTicker,ticker);
+    void restartedTicker.offsetWidth;
+    restartedTicker.getAnimations().forEach(animation=>{
+        animation.cancel();
+        animation.play();
+    });
+}
+
+function triggerNormalMode(){
+    if(trailerStartTimer) clearTimeout(trailerStartTimer);
+    if(waitTimer) clearTimeout(waitTimer);
+    trailerStartTimer = null;
+    waitTimer = null;
+    isWaitingForGame = false;
+
+    document.body.classList.remove('doomed');
+    setNewsTickerContent(normalNewsTickerContent);
+
+    const gamesSidebar = document.querySelector('#games .games-sidebar');
+    if(gamesSidebar) gamesSidebar.innerHTML = normalGamesSidebarContent;
+    const gamesTitleBar = document.querySelector('#games .title-bar span');
+    if(gamesTitleBar) gamesTitleBar.textContent = normalGamesTitle;
+
+    if(previousGameTitle !== null){
+        const gameTitle = document.getElementById('game-title');
+        const gameFrame = document.getElementById('game-iframe');
+        if(gameTitle) gameTitle.textContent = previousGameTitle;
+        if(gameFrame) gameFrame.setAttribute('src',previousGameSrc);
+        gameVideoPlaying = Boolean(previousGameSrc);
+        previousGameTitle = null;
+        previousGameSrc = '';
+    }
+
+    const gamesIcon = document.getElementById('games-icon-img');
+    const gamesText = document.getElementById('games-icon-text');
+    if(gamesIcon){
+        gamesIcon.src = "https://z-cdn-media.chatglm.cn/files/2f3d2fe1-e9a1-403c-8d77-a28e27ecfbf1.png?auth_key=1891819418-26fdbb5a43b4404cb0194b5d7a52d930-0-640db7da43bd44036761e4df6e239cca";
+        gamesIcon.alt = "Insomniac Games";
+    }
+    if(gamesText) gamesText.textContent = "Insomniac Games";
+
+    const doomText = document.querySelector('.doom-text');
+    if(doomText){
+        doomText.innerHTML = "VON DOOM<br>INDUSTRIES";
+        doomText.style.color = "";
+        doomText.style.textShadow = "";
+    }
+    console.log("NORMAL MODE activated.");
+}
+
+function triggerDoomProtocol(){
+    if(!document.body.classList.contains('doomed')){
+        const gameTitle = document.getElementById('game-title');
+        const gameFrame = document.getElementById('game-iframe');
+        previousGameTitle = gameTitle ? gameTitle.textContent : 'Select a game from the left';
+        previousGameSrc = gameFrame ? gameFrame.getAttribute('src') || '' : '';
+    }
+
+    document.body.classList.add('doomed');
+    setNewsTickerContent('DOOM PROTOCOL ACTIVE &nbsp;&bull;&nbsp; VON DOOM RULES THIS WORLD &nbsp;&bull;&nbsp; RESISTANCE IS FUTILE &nbsp;&bull;&nbsp; ALL HAIL DOOM &nbsp;&bull;&nbsp; BIG UPS TO MY BOY, SPIDER-MAN &nbsp;&bull;&nbsp; DOOM DEMANDS A BANANA SPLIT &nbsp;&bull;&nbsp;');
+
+    const gamesSidebar = document.querySelector('#games .games-sidebar');
+    if(gamesSidebar){
+        gamesSidebar.innerHTML =
+            '<h4>DOOM NETWORK</h4>' +
+            "<button class='game-btn' onclick=\"loadGame('DOOM BROADCAST 1','C8sttjTB2I0','youtube')\">DOOM BROADCAST 1</button>" +
+            "<button class='game-btn' onclick=\"loadGame('DOOM BROADCAST 2','tbTbvbZltW8','youtube')\">DOOM BROADCAST 2</button>" +
+            "<button class='game-btn' onclick=\"loadGame('DOOM BROADCAST 3','8i0b8zs940o','youtube')\">DOOM BROADCAST 3</button>" +
+            "<button class='game-btn' onclick=\"loadGame('DOOM BROADCAST 4','FFWzIbkXxBU','youtube')\">DOOM BROADCAST 4</button>" +
+            "<button class='game-btn' onclick=\"loadGame('DOOM BROADCAST 5','AD-_ofeCqfM','youtube')\">DOOM BROADCAST 5</button>";
+    }
+    const gamesTitleBar = document.querySelector('#games .title-bar span');
+    if(gamesTitleBar) gamesTitleBar.textContent = 'Cynthia Entertainment';
+    const gameTitle = document.getElementById('game-title');
+    const gameFrame = document.getElementById('game-iframe');
+    if(gameTitle) gameTitle.textContent = 'DOOM NETWORK ACCESS';
+    if(gameFrame) gameFrame.setAttribute('src','');
+    gameVideoPlaying = false;
+
+    const gamesIcon = document.getElementById('games-icon-img');
+    const gamesText = document.getElementById('games-icon-text');
+    if(gamesIcon){
+        gamesIcon.src = "https://z-cdn-media.chatglm.cn/files/f2cd5ee8-716c-4005-bafa-c7bc752132b1.jpg?auth_key=1891952674-2485b7ebf32f494381e5f1412c4ab818-0-9aa17777f8dfee02ba4041e4fb8259d8";
+        gamesIcon.alt = "Cynthia Entertainment";
+    }
+    if(gamesText) gamesText.textContent = "Cynthia Entertainment";
+
+    if(!hasTrailerPlayed){
+        if(!gameVideoPlaying){
+            trailerStartTimer = setTimeout(()=>{
+                trailerStartTimer = null;
+                if(!hasTrailerPlayed && document.body.classList.contains('doomed')){
+                    playDoomsdayTrailer();
+                }
+            },5000);
+        }else{
+            isWaitingForGame = true;
+        }
+    }
+    console.log("DOOM PROTOCOL activated.");
+}
+
+const MODE_INTERVAL = 2 * 60 * 1000;
+let currentModeIsNormal = true;
+let nextModeSwitchAt = Date.now() + MODE_INTERVAL;
+
+function updateModeCountdown(){
+    const countdown = document.getElementById('mode-countdown');
+    if(!countdown) return;
+    const secondsLeft = Math.max(0,Math.ceil((nextModeSwitchAt-Date.now())/1000));
+    const minutes = Math.floor(secondsLeft/60);
+    const seconds = String(secondsLeft%60).padStart(2,'0');
+    countdown.textContent = minutes+':'+seconds;
+}
+
+triggerNormalMode();
+updateModeCountdown();
+setInterval(()=>{
+    if(Date.now()>=nextModeSwitchAt){
+        if(currentModeIsNormal){
+            triggerDoomProtocol();
+            currentModeIsNormal = false;
+        }else{
+            triggerNormalMode();
+            currentModeIsNormal = true;
+        }
+        nextModeSwitchAt = Date.now()+MODE_INTERVAL;
+    }
+    updateModeCountdown();
+},1000);
+</script>
+</body>
+</html>
+<!--Made by Koushik Tummepalli-->
+<!--Hope everyone love it-->

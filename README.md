@@ -36,6 +36,5 @@ Credits
 - Scratch
 - Spider-Tracker
 - Youtube
-- Z.ai(for debugging and for making the picture links permenant, and make the TVA agent's diaglogue feel like the character's)
 
 MARVELOS - Koushik Tummepalli
